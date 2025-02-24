@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { useState } from "react";
-import Rectangle from "@/components/Rectangle";
+import Rectangle from "@/components/layout/Rectangle";
 
 export default function Colors() {
   const colors = {
