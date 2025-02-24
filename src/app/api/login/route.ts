@@ -15,5 +15,6 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({ success: true }, { status: 200 });
+  const { email, password, ...userData } = user;
+  return NextResponse.json({ success: true, user: userData }, { status: 200 });
 }

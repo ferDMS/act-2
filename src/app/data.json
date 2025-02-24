@@ -7,6 +7,14 @@
       "password": "Abcd1234",
       "count": 30,
       "color": "blue"
+    },
+    {
+      "id": 2,
+      "name": "Tester",
+      "email": "123",
+      "password": "123",
+      "count": 30,
+      "color": "blue"
     }
   ]
 }

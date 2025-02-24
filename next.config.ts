@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
         destination: "/counter",
         permanent: true,
       },
+      {
+        source: "/home",
+        destination: "/counter",
+        permanent: true,
+      },
     ];
   },
 };
