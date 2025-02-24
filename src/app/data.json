@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Daniel",
+      "email": "daniel@gmail.com",
+      "password": "Abcd1234",
+      "count": 30,
+      "color": "blue"
+    }
+  ]
+}
