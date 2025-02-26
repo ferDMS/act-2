@@ -9,8 +9,7 @@ export async function GET(request: Request, context: any) {
   const user = data.users.filter((x) => params.userId === x.id.toString());
 
   if (user.length > 0) {
-    const { name, count, color } = user[0];
-    return NextResponse.json({ name, count, color });
+    return NextResponse.json(user[0]);
   } else {
     return NextResponse.json(
       {

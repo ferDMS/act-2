@@ -1,14 +1,32 @@
 import Link from "next/link";
+import { User } from "@/types/user";
 
-export default function Header() {
+interface HeaderProps {
+  user: User | null;
+  setView: (view: string) => void;
+}
+
+export default function Header({ user, setView }: HeaderProps) {
   return (
-    <header className="flex h-[73px] text-2xl font-bold bg-black text-white items-center justify-evenly">
-      <Link className="hover:text-gray-400" href="counter">
-        Counter
-      </Link>
-      <Link className="hover:text-gray-400" href="colors">
-        Colors
-      </Link>
+    <header>
+      {user === null ? (
+        <div className="flex h-[73px] bg-black"></div>
+      ) : (
+        <div className="flex h-[73px] text-2xl font-bold bg-black text-white items-center justify-evenly">
+          <button
+            className="hover:text-gray-400"
+            onClick={() => setView("counter")}
+          >
+            Counter
+          </button>
+          <button
+            className="hover:text-gray-400"
+            onClick={() => setView("colors")}
+          >
+            Colors
+          </button>
+        </div>
+      )}
     </header>
   );
 }

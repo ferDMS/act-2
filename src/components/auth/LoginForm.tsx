@@ -1,13 +1,13 @@
-interface LoginFormProps {
-  onLogin: (name: string) => void;
-}
+import { User } from "@/types/user";
+import { useUser } from "@/context/UserContext";
 
-export default function LoginForm({ onLogin }: LoginFormProps) {
+export default function LogInForm() {
+  const { setUser } = useUser(); // Move hook to component level
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
     const formData = new FormData(e.target as HTMLFormElement);
-    const name = formData.get("Name");
     const email = formData.get("Email");
     const password = formData.get("Password");
 
@@ -22,8 +22,8 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
       if (response) {
         const data = await response.json();
         if (response.status === 200) {
-          const name = data.user.name;
-          onLogin(name);
+          setUser(data.user as User);
+          console.log(data);
         } else {
           console.log("Login failed:", data.message);
         }
@@ -47,21 +47,21 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
       </h3>
 
       <div className="grid grid-cols-3 w-full gap-y-5 gap-x-10 text-md">
-        <label className="font-bold">Name</label>
+        {/* <label className="font-bold">Name</label>
         <input
           className="col-span-2 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500 px-5"
           name="Name"
           type="text"
-        />
+        /> */}
         <label className="font-bold">Email</label>
         <input
-          className="col-span-2 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500 px-5"
+          className="col-span-2 bg-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500 px-5"
           name="Email"
           type="email"
         />
         <label className="font-bold">Password</label>
         <input
-          className="col-span-2 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500 px-5"
+          className="col-span-2 bg-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500 px-5"
           name="Password"
           type="password"
         />
